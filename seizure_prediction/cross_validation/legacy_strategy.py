@@ -1,5 +1,5 @@
 import numpy as np
-import sklearn.cross_validation
+import sklearn.model_selection import train_test_split
 from seizure_prediction.cross_validation.sequences import collect_sequence_ranges_from_meta
 
 
@@ -21,7 +21,7 @@ class LegacyStrategy:
     def get_sequence_ranges(self, meta, fold_number, interictal=None, shuffle=None):
         train_size = 0.8
         seq_ranges = collect_sequence_ranges_from_meta(meta, shuffle=False)
-        return sklearn.cross_validation.train_test_split(seq_ranges, train_size=train_size, random_state=fold_number)
+        return train_test_split(seq_ranges, train_size=train_size, random_state=fold_number)
 
     def split_train_cv(self, data, meta, fold_number, interictal=False):
 
